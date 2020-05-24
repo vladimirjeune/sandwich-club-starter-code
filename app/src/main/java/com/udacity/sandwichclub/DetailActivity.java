@@ -37,14 +37,14 @@ public class DetailActivity extends AppCompatActivity {
 
         String[] sandwiches = getResources().getStringArray(R.array.sandwich_details);
         String json = sandwiches[position];
-        Sandwich sandwich = JsonUtils.parseSandwichJson(json);
+        Sandwich sandwich = JsonUtils.parseSandwichJson(json);  // TODO: Make this work
         if (sandwich == null) {
             // Sandwich data unavailable
             closeOnError();
             return;
         }
 
-        populateUI();
+        populateUI();  // TODO: Make this work
         Picasso.get()
                 .load(sandwich.getImage())
                 .into(ingredientsIv);

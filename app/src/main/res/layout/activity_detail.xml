@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     tools:context="com.udacity.sandwichclub.DetailActivity">
 
+    <!--    TODO: Arrange so readable and nice looking-->
+
     <ImageView
         android:id="@+id/image_iv"
         android:layout_width="match_parent"
