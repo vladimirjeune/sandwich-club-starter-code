@@ -45,7 +45,7 @@
             android:text="@string/detail_also_known_as_label"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="@+id/also_known_tv"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             />
 
         <TextView
@@ -58,7 +58,7 @@
             android:paddingEnd="8dp"
             android:text="@string/detail_place_of_origin_label"
             android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/origin_tv"
             />
 
@@ -72,7 +72,7 @@
             android:paddingEnd="8dp"
             android:text="@string/detail_description_label"
             android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/description_tv"
             />
 
@@ -86,7 +86,7 @@
             android:paddingEnd="8dp"
             android:text="@string/detail_ingredients_label"
             android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/ingredients_tv"
             />
 
@@ -146,6 +146,13 @@
             detail_ingredient_label_tv"
             app:layout_constraintGuide_begin="8dp"
             />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/label_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="8dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
