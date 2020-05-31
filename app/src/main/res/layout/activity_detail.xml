@@ -139,19 +139,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="end"
-            app:constraint_referenced_ids=
-                "detail_aka_label_tv,
+            app:constraint_referenced_ids="detail_aka_label_tv,
             detail_po_label_tv,
             detail_description_label_tv,
             detail_ingredient_label_tv"
-            app:layout_constraintGuide_begin="8dp"
-            />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/label_guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
             app:layout_constraintGuide_begin="8dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
