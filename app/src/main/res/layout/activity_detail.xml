@@ -26,7 +26,7 @@
             />
 
         <TextView
-            android:id="@+id/name_label_tv"
+            android:id="@+id/name_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Name"
@@ -144,7 +144,8 @@
             detail_po_label_tv,
             detail_description_label_tv,
             detail_ingredient_label_tv"
-            app:layout_constraintGuide_begin="8dp" />
+
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

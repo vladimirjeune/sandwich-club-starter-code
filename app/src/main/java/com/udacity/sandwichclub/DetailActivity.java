@@ -60,7 +60,7 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI(Sandwich aSandwich) {
 
         // Obtain View Elements
-        TextView name_tv = findViewById((R.id.name_label_tv));
+        TextView name_tv = findViewById(R.id.name_tv);
 
         TextView aka_tv = findViewById(R.id.also_known_tv);
 

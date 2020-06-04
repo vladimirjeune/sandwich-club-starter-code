@@ -26,7 +26,9 @@ public class JsonUtils {
         final String SC_INGREDIENTS ="ingredients";
 
         try {
-            JSONObject jsonNameObject = new JSONObject(json);
+            JSONObject jsonObject = new JSONObject(json);  // Raw object
+
+            JSONObject jsonNameObject = jsonObject.getJSONObject(SC_NAME_OB);  // Name Object with mainName, and aliases
 
             // Name(s)
             String mainName = jsonNameObject.getString(SC_MAIN_NAME);
@@ -38,16 +40,16 @@ public class JsonUtils {
             }
 
             // Place of Origin
-            String placeOfOrigin = jsonNameObject.getString(SC_PLACE_OF_ORIGIN);
+            String placeOfOrigin = jsonObject.getString(SC_PLACE_OF_ORIGIN);
 
             // Description
-            String description = jsonNameObject.getString(SC_DESCRIPTION);
+            String description = jsonObject.getString(SC_DESCRIPTION);
 
             // Image URL
-            String image = jsonNameObject.getString(SC_IMAGE);
+            String image = jsonObject.getString(SC_IMAGE);
 
             // Ingredients
-            JSONArray jsonIngredientsArray = jsonNameObject.getJSONArray(SC_INGREDIENTS);
+            JSONArray jsonIngredientsArray = jsonObject.getJSONArray(SC_INGREDIENTS);
             ArrayList<String> ingredientsArr = new ArrayList<>();
             for (int i = 0; i < jsonIngredientsArray.length(); i++ ) {
                 ingredientsArr.add( jsonIngredientsArray.getString(i));
