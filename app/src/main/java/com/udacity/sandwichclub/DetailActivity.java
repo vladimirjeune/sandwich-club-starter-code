@@ -18,6 +18,8 @@ public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
+    public static final String ALIAS_DELIMITER = ", ";
+    public static final String INGREDIENT_DELIMITER = "\n\n";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
+
     private void populateUI(Sandwich aSandwich) {
 
         // Obtain View Elements
@@ -72,7 +75,6 @@ public class DetailActivity extends AppCompatActivity {
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
 
-
         // Populate
         Picasso.get()
                 .load(aSandwich.getImage())
@@ -80,73 +82,48 @@ public class DetailActivity extends AppCompatActivity {
 
         name_tv.setText(aSandwich.getMainName());
 
-        populateAliases(aSandwich, aka_tv);
+        populateLists(aSandwich.getAlsoKnownAs(), aka_tv, ALIAS_DELIMITER);
 
         origin_tv.setText(aSandwich.getPlaceOfOrigin());
 
         description_tv.setText(aSandwich.getDescription());
 
-        populateIngredients(aSandwich, ingredients_tv);
+        populateLists(aSandwich.getIngredients(), ingredients_tv, INGREDIENT_DELIMITER);
 
-    }
-
-
-    /**
-     * POPULATEINGREDIENTS - Turns array of aliases into a readable string to be input into the
-     * appropriate TextView
-     * @param aSandwich - Sandwich we are getting data from
-     * @param ingredients_tv    - TextView to populate
-     */
-    private void populateIngredients(Sandwich aSandwich, TextView ingredients_tv) {
-        List<String> ingredient_list = aSandwich.getIngredients();  // Get list
-        String ingredient_str = "";  // Final String
-
-        if (0 != ingredient_list.size()) {  // If there is anything
-
-            StringBuilder ingredients_sb = new StringBuilder();  // Collector
-            for (int i = 0; i < ingredient_list.size(); i++) {
-
-                if (1 == (ingredient_list.size() - i)) {
-                    ingredients_sb.append(ingredient_list.get(i));
-                } else {
-                    ingredients_sb.append(ingredient_list.get(i) + "\n\n");
-                }
-
-            }
-
-            ingredient_str = ingredients_sb.toString();  // String to add to TV
-
-        }
-
-        ingredients_tv.setText(ingredient_str);
     }
 
     /**
-     * POPULATEALIASES - Turns array of aliases into a readable string to be input into the
-     * appropriate TextView
-     * @param aSandwich - Sandwich we are getting data from
-     * @param aka_tv    - TextView to populate
+     * POPULATELISTS - Turns array of data into a readable string with the passed
+     * in delimiters. This will be displayed in the passed in TextView
+     * @param textView_list - A list of text that is to be displayed on a TextView | Not Null
+     * @param display_tv    - The TextView that should display the inputted list   | Not Null
+     * @param delimiter     - The delimiter between each element of the list, when displayed | Not Null
      */
-    private void populateAliases(Sandwich aSandwich, TextView aka_tv) {
-        // Get list of Aliases if any
-        List<String> aka_list = aSandwich.getAlsoKnownAs();
-        String aka_str = "";  // Final output
+    private void populateLists( List<String> textView_list, TextView display_tv, String delimiter) {
+        assert textView_list != null : "List<String> is null";
+        assert display_tv != null : "TextView is null";
+        assert delimiter != null : "String is null";
 
-        if (0 != aka_list.size()) {  // Have at least one
+        String textView_list_str = "";  // Final String output
 
-            StringBuilder aka_sb = new StringBuilder();
+        if (0 != textView_list.size()) {  // If there is anything in the list
 
-            for (int i = 0; i < aka_list.size(); i++) {
-                if (1 == aka_list.size() - i) {
-                    aka_sb.append(aka_list.get(i));  // Final alias
+            StringBuilder textView_sb = new StringBuilder();  // Collector
+
+            for (int i = 0; i < textView_list.size(); i++) {
+
+                if (1 == textView_list.size() - i) {  // In middle of list, need to delimit
+                    textView_sb.append(textView_list.get(i));
                 } else {
-                    aka_sb.append(aka_list.get(i) + ", ");  // Middle stuff
+                    textView_sb.append(textView_list.get(i) + delimiter);
                 }
             }
 
-            aka_str = aka_sb.toString();
+            textView_list_str = textView_sb.toString();  // String to add to TextView
+
         }
 
-        aka_tv.setText(aka_str);
+        display_tv.setText(textView_list_str);
     }
+
 }
